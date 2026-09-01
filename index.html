@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Lyons — Selected Work &amp; Life</title>
+<meta name="description" content="Jack Lyons — designer &amp; builder. A cinematic look at the life, projects, and milestones behind the work.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ PRELOADER ============ -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__count"><span id="preloaderCount">0</span></div>
+  <div class="preloader__label">Loading the reel</div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+</div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+</div>
+
+<!-- ============ PROGRESS RAIL ============ -->
+<div class="scroll-rail" aria-hidden="true"><span id="scrollFill"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" data-reveal>
+  <a class="nav__mark" href="#top">J·L</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="menu">
+    <span>Menu</span>
+    <div class="nav__burger"><i></i><i></i></div>
+  </button>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <ul class="menu__list">
+    <li><a href="#story" data-menu-link><span>01</span>The Story</a></li>
+    <li><a href="#work" data-menu-link><span>02</span>Selected Work</a></li>
+    <li><a href="#milestones" data-menu-link><span>03</span>Milestones</a></li>
+    <li><a href="#craft" data-menu-link><span>04</span>Craft</a></li>
+    <li><a href="#contact" data-menu-link><span>05</span>Contact</a></li>
+  </ul>
+  <div class="menu__footer">
+    <span>Based in — <em>Placeholder City</em></span>
+    <span>Available for select projects, 2026</span>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas class="hero__canvas" id="heroCanvas"></canvas>
+    <div class="hero__grain"></div>
+    <div class="hero__vignette"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow" data-split>A living reel of work &amp; life</p>
+      <h1 class="hero__title">
+        <span class="hero__title-line" data-split>Jack</span>
+        <span class="hero__title-line hero__title-line--em" data-split>Lyons</span>
+      </h1>
+      <p class="hero__desc" data-split>Designer, builder, and quiet collector of moments —<br>this is the story behind the work, told in scenes.</p>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"><i></i></div>
+    </div>
+
+    <div class="hero__meta">
+      <span>Est. Portfolio — Vol. 01</span>
+      <span id="clock">— — : — —</span>
+    </div>
+  </section>
+
+  <!-- ============ INTRO STRIP ============ -->
+  <section class="intro">
+    <p class="intro__text" data-lines>
+      Every career has a highlight reel. Mine started with a broken radio, a
+      borrowed camera, and a stubborn refusal to build anything the easy way.
+      What follows isn't a résumé — it's the footage.
+    </p>
+  </section>
+
+  <!-- ============ THE STORY (pinned chapters) ============ -->
+  <section class="story" id="story">
+    <div class="story__pin">
+      <div class="story__bg" id="storyBg"></div>
+      <div class="story__frame">
+        <span class="story__index">01 — The Story</span>
+        <div class="story__chapters" id="storyChapters">
+
+          <article class="chapter" data-chapter data-tint="#0d1b1e">
+            <span class="chapter__num">00</span>
+            <h2 class="chapter__title">Origins</h2>
+            <p class="chapter__body">Placeholder — [Hometown], [Year]. Grew up taking things apart to
+              see how they worked, and getting in mild trouble putting them back together wrong.
+              The curiosity never really left.</p>
+          </article>
+
+          <article class="chapter" data-chapter data-tint="#161022">
+            <span class="chapter__num">01</span>
+            <h2 class="chapter__title">First Build</h2>
+            <p class="chapter__body">Placeholder — Shipped a first project at [Age/Year]: a scrappy,
+              held-together-with-tape thing that somehow worked. It taught me more than any class
+              ever did — mostly about finishing what you start.</p>
+          </article>
+
+          <article class="chapter" data-chapter data-tint="#1c1408">
+            <span class="chapter__num">02</span>
+            <h2 class="chapter__title">The Craft Years</h2>
+            <p class="chapter__body">Placeholder — Years spent in studios and codebases, learning the
+              difference between decoration and design. This is where taste got built, one
+              rejected draft at a time.</p>
+          </article>
+
+          <article class="chapter" data-chapter data-tint="#0c1420">
+            <span class="chapter__num">03</span>
+            <h2 class="chapter__title">Today</h2>
+            <p class="chapter__body">Placeholder — Now: independent, selective, and still chasing the
+              same feeling as that first build — the one where something you made actually works,
+              and someone else actually feels it.</p>
+          </article>
+
+        </div>
+      </div>
+      <div class="story__progress" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK (horizontal pinned gallery) ============ -->
+  <section class="work" id="work">
+    <div class="work__intro">
+      <span class="work__index">02 — Selected Work</span>
+      <h2 class="work__heading" data-split>Personal projects,<br>shipped in the open.</h2>
+    </div>
+
+    <div class="work__pin">
+      <div class="work__track" id="workTrack">
+
+        <article class="project" data-project style="--tint:#26140f">
+          <div class="project__media">
+            <div class="project__gradient"></div>
+            <span class="project__frame-label">REEL 01</span>
+          </div>
+          <div class="project__info">
+            <span class="project__year">2025</span>
+            <h3 class="project__title">Northbound</h3>
+            <p class="project__desc">Placeholder — A personal wayfinding app built after getting
+              gloriously lost on a solo trip. Minimal UI, offline-first, obsessively tuned typography.</p>
+            <div class="project__tags"><span>Product Design</span><span>iOS</span><span>Solo</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-project style="--tint:#101f26">
+          <div class="project__media">
+            <div class="project__gradient"></div>
+            <span class="project__frame-label">REEL 02</span>
+          </div>
+          <div class="project__info">
+            <span class="project__year">2024</span>
+            <h3 class="project__title">Ember Archive</h3>
+            <p class="project__desc">Placeholder — A generative photo archive that composes daily
+              collages from old family footage. Started as a gift, became a habit.</p>
+            <div class="project__tags"><span>Creative Coding</span><span>Web</span><span>Family</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-project style="--tint:#1c1026">
+          <div class="project__media">
+            <div class="project__gradient"></div>
+            <span class="project__frame-label">REEL 03</span>
+          </div>
+          <div class="project__info">
+            <span class="project__year">2023</span>
+            <h3 class="project__title">Quiet Hours</h3>
+            <p class="project__desc">Placeholder — A tiny hardware clock that only tells time during
+              focus blocks. Built to fight my own restlessness; 40 units sold to strangers online.</p>
+            <div class="project__tags"><span>Hardware</span><span>Brand</span><span>Side Project</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-project style="--tint:#231a08">
+          <div class="project__media">
+            <div class="project__gradient"></div>
+            <span class="project__frame-label">REEL 04</span>
+          </div>
+          <div class="project__info">
+            <span class="project__year">2022</span>
+            <h3 class="project__title">Field Notes: Vol. 3</h3>
+            <p class="project__desc">Placeholder — A self-published print zine documenting a year of
+              location scouting. Three runs, sold out each time, still bootstrapped.</p>
+            <div class="project__tags"><span>Editorial</span><span>Print</span><span>Photography</span></div>
+          </div>
+        </article>
+
+        <article class="project project--end" data-project>
+          <div class="project__end">
+            <span>That's the reel —</span>
+            <h3>more in the archive</h3>
+            <a href="#contact" class="project__end-link">Ask me about the rest →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MILESTONES ============ -->
+  <section class="milestones" id="milestones">
+    <span class="milestones__index">03 — Milestones</span>
+    <h2 class="milestones__heading" data-split>Moments worth<br>the reel running twice.</h2>
+
+    <div class="timeline">
+      <div class="timeline__line"><span id="timelineFill"></span></div>
+
+      <div class="milestone" data-milestone>
+        <div class="milestone__dot"></div>
+        <span class="milestone__year">2019</span>
+        <h3 class="milestone__title">First client, first "no"</h3>
+        <p class="milestone__body">Placeholder — Got turned down twice before landing the project
+          that taught me how to actually run one. The "no"s mattered more than the "yes."</p>
+      </div>
+
+      <div class="milestone" data-milestone>
+        <div class="milestone__dot"></div>
+        <span class="milestone__year">2021</span>
+        <h3 class="milestone__title">Left the safe job</h3>
+        <p class="milestone__body">Placeholder — Traded a steady title for uncertain mornings.
+          Terrifying for about six months, obvious in hindsight.</p>
+      </div>
+
+      <div class="milestone" data-milestone>
+        <div class="milestone__dot"></div>
+        <span class="milestone__year">2023</span>
+        <h3 class="milestone__title">Work shown, not just shipped</h3>
+        <p class="milestone__body">Placeholder — First feature in a design publication. Small
+          mention, outsized confidence boost.</p>
+      </div>
+
+      <div class="milestone" data-milestone>
+        <div class="milestone__dot"></div>
+        <span class="milestone__year">2026</span>
+        <h3 class="milestone__title">This site</h3>
+        <p class="milestone__body">Placeholder — Rebuilt the portfolio as something closer to a
+          short film than a résumé. You're standing in it.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="stat__num" data-count="9">0</span><span class="stat__label">Years building</span></div>
+      <div class="stat"><span class="stat__num" data-count="27">0</span><span class="stat__label">Shipped projects</span></div>
+      <div class="stat"><span class="stat__num" data-count="4">0</span><span class="stat__label">Cities called home</span></div>
+      <div class="stat"><span class="stat__num" data-count="1">0</span><span class="stat__label">Rule — finish it</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CRAFT MARQUEE ============ -->
+  <section class="craft" id="craft">
+    <div class="craft__marquee" aria-hidden="true">
+      <div class="craft__track">
+        <span>Product Design</span><span>·</span>
+        <span>Front-End Engineering</span><span>·</span>
+        <span>Brand Systems</span><span>·</span>
+        <span>Motion</span><span>·</span>
+        <span>Photography</span><span>·</span>
+        <span>Product Design</span><span>·</span>
+        <span>Front-End Engineering</span><span>·</span>
+        <span>Brand Systems</span><span>·</span>
+        <span>Motion</span><span>·</span>
+        <span>Photography</span><span>·</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <span class="contact__index">05 — Contact</span>
+      <h2 class="contact__heading" data-split>Got a story worth<br>building together?</h2>
+      <a class="contact__email" href="mailto:hello@jelyons.com">hello@jelyons.com</a>
+      <div class="contact__socials">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Letterboxd</a>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>© 2026 Jack Lyons</span>
+      <span>Built frame by frame</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </section>
+
+</main>
+
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
