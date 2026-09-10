@@ -204,7 +204,7 @@ section{ position: relative; }
 .intro__text .line-inner{ color: var(--fg); }
 
 /* ---------- Story (pinned chapters) ---------- */
-.story{ height: 400vh; background: var(--bg); }
+.story{ height: 500vh; background: var(--bg); }
 .story__pin{ position: sticky; top:0; height:100svh; overflow:hidden; }
 .story__bg{
   position:absolute; inset:0; background: #0d1b1e; transition: background 1s var(--ease);
@@ -271,6 +271,51 @@ section{ position: relative; }
 .project__end span{ font-family: var(--mono); color: var(--fg-faint); font-size:13px; letter-spacing:.04em; }
 .project__end h3{ font-family: var(--serif); font-weight:400; font-size: clamp(27px,3.6vw,48px); margin: 12px 0 26px; }
 .project__end-link{ font-family: var(--mono); font-size:13px; letter-spacing:.03em; border-bottom:1px solid var(--accent); padding-bottom:4px; color: var(--accent); }
+
+/* ---------- Photography ---------- */
+.photography{ padding: 20vh var(--container); background: var(--bg); }
+.photography__index{ font-family: var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--fg-dim); }
+.photography__heading{ font-family: var(--serif); font-weight:400; font-size: clamp(32px,5vw,72px); margin: 22px 0 24px; line-height:1.08; letter-spacing:-0.01em; }
+.photography__desc{ font-size:16px; line-height:1.65; color: var(--fg-dim); max-width:56ch; margin-bottom: 8vh; }
+
+.photo-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+}
+.photo-tile{
+  position:relative; aspect-ratio: 4/5; overflow:hidden; display:block;
+  background: var(--tint, #16130f);
+}
+.photo-tile__grad{
+  position:absolute; inset:0;
+  background: linear-gradient(160deg, var(--tint,#16130f) 0%, #05050400 65%),
+              conic-gradient(from 200deg at 30% 15%, rgba(255,255,255,.14), transparent 45%);
+  transition: transform .6s var(--ease);
+}
+.photo-tile:hover .photo-tile__grad{ transform: scale(1.06); }
+.photo-tile__title{
+  position:absolute; left:16px; bottom:16px; right:16px;
+  font-family: var(--serif); font-style: italic; font-weight:400; color: var(--fg);
+  font-size: clamp(16px,1.6vw,20px);
+}
+@media (max-width: 860px){ .photo-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px){ .photo-grid{ grid-template-columns: 1fr; } }
+
+/* ---------- Sori Zilla Radio ---------- */
+.radio{ padding: 20vh var(--container); background: var(--bg-soft); }
+.radio__index{ font-family: var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--fg-dim); }
+.radio__heading{ font-family: var(--serif); font-weight:400; font-size: clamp(32px,5vw,72px); margin: 22px 0 24px; line-height:1.08; letter-spacing:-0.01em; }
+.radio__desc{ font-size:16px; line-height:1.65; color: var(--fg-dim); max-width:56ch; margin-bottom: 8vh; }
+.radio__desc a{ color: var(--accent); border-bottom:1px solid var(--accent); padding-bottom:1px; }
+
+.tracklist{ list-style:none; margin:0; padding:0; max-width: 780px; }
+.track{
+  display:flex; align-items:baseline; gap:24px; padding: 20px 0;
+  border-top:1px solid var(--line);
+}
+.tracklist li:last-child{ border-bottom:1px solid var(--line); }
+.track__num{ font-family: var(--mono); font-size:12px; color: var(--fg-faint); width:20px; flex-shrink:0; }
+.track__title{ font-family: var(--serif); font-style:italic; font-size: clamp(19px,2vw,26px); flex:1; }
+.track__tag{ font-family: var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color: var(--accent); }
 
 /* ---------- Milestones ---------- */
 .milestones{ padding: 20vh var(--container); background: var(--bg-soft); }
