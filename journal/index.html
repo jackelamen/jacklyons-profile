@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Journal — Jack Lyons</title>
+<meta name="description" content="Essays, updates, and video logs from Jack &quot;Zilla&quot; Lyons — the longer thoughts behind the reel.">
+
+<link rel="stylesheet" href="../vendor/fonts/fonts.css">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__count"><span id="preloaderCount">0</span></div>
+  <div class="preloader__label">Loading the reel</div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+</div>
+
+<div class="scroll-rail" aria-hidden="true"><span id="scrollFill"></span></div>
+
+<header class="nav">
+  <a class="nav__mark" href="../">J·Z·L</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="menu">
+    <span>Menu</span>
+    <div class="nav__burger"><i></i><i></i></div>
+  </button>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <ul class="menu__list">
+    <li><a href="../#story" data-menu-link><span>01</span>The Story</a></li>
+    <li><a href="../#work" data-menu-link><span>02</span>On Screen</a></li>
+    <li><a href="../#photography" data-menu-link><span>03</span>Photography</a></li>
+    <li><a href="../#radio" data-menu-link><span>04</span>Sori Zilla Radio</a></li>
+    <li><a href="./" data-menu-link><span>05</span>Journal</a></li>
+    <li><a href="../#milestones" data-menu-link><span>06</span>Milestones</a></li>
+    <li><a href="../#contact" data-menu-link><span>07</span>Contact</a></li>
+  </ul>
+  <div class="menu__footer">
+    <span>Based in — <em>Seoul, South Korea</em></span>
+    <span>Making noise since 2010</span>
+  </div>
+</nav>
+
+<main>
+  <section class="post-hero">
+    <span class="post-hero__index" data-reveal-up>05 — Journal</span>
+    <h1 class="post-hero__title" data-reveal-up>Longer thoughts,<br>written down.</h1>
+    <p class="post-hero__desc" data-reveal-up>Essays, updates, and the occasional video log — the
+      slower record behind the scenes above.</p>
+  </section>
+
+  <section class="post-list-section">
+    <div class="post-list" id="postList" aria-live="polite"></div>
+  </section>
+
+  <footer class="footer">
+    <span>© 2026 Jack Lyons</span>
+    <span>Built frame by frame</span>
+    <a href="../#top">Back to top ↑</a>
+  </footer>
+</main>
+
+<script src="../chrome.js"></script>
+<script src="render.js"></script>
+<script>
+  loadJournalPosts("").then((posts) => {
+    renderJournalCards(document.getElementById("postList"), posts, { basePath: "" });
+  });
+</script>
+</body>
+</html>

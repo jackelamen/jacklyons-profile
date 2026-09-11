@@ -1,87 +1,12 @@
 /* =========================================================
-   JACK LYONS — CINEMATIC PORTFOLIO
-   Scroll choreography, lightweight canvas atmosphere, and
-   performance guards (pause off-screen work, respect
-   prefers-reduced-motion, cheap DOM writes via rAF/ScrollTrigger).
+   HOMEPAGE CINEMATICS — GSAP/ScrollTrigger scroll choreography and
+   the hero canvas atmosphere. Loaded only on index.html; journal
+   pages use chrome.js alone so reading isn't fought by pinned/
+   scroll-jacked sections.
 ========================================================= */
 
 (() => {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const isTouch = window.matchMedia("(hover: none)").matches;
-
-  /* ---------------- Preloader ---------------- */
-  const preloader = document.getElementById("preloader");
-  const countEl = document.getElementById("preloaderCount");
-  const fillEl = document.getElementById("preloaderFill");
-  let progress = 0;
-  const loadTimer = setInterval(() => {
-    progress += Math.random() * 18;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(loadTimer);
-      setTimeout(() => preloader.classList.add("is-done"), 350);
-    }
-    countEl.textContent = Math.floor(progress);
-    fillEl.style.width = progress + "%";
-  }, 120);
-
-  /* ---------------- Custom cursor ---------------- */
-  if (!isTouch) {
-    const cursor = document.getElementById("cursor");
-    let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
-    let rx = cx, ry = cy;
-    window.addEventListener("pointermove", (e) => { cx = e.clientX; cy = e.clientY; });
-    (function loop() {
-      rx += (cx - rx) * 0.18;
-      ry += (cy - ry) * 0.18;
-      cursor.style.transform = `translate(${rx}px, ${ry}px)`;
-      requestAnimationFrame(loop);
-    })();
-    document.querySelectorAll("a, button, [data-project]").forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("is-hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("is-hover"));
-    });
-  }
-
-  /* ---------------- Nav / fullscreen menu ---------------- */
-  const navToggle = document.getElementById("navToggle");
-  const menu = document.getElementById("menu");
-  navToggle.addEventListener("click", () => {
-    const open = menu.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", open);
-    menu.setAttribute("aria-hidden", !open);
-  });
-  menu.querySelectorAll("[data-menu-link]").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  /* ---------------- Clock (small cinematic detail) ---------------- */
-  const clockEl = document.getElementById("clock");
-  if (clockEl) {
-    const tick = () => {
-      const d = new Date();
-      clockEl.textContent = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    };
-    tick();
-    setInterval(tick, 30000);
-  }
-
-  /* ---------------- Text split into lines/words for reveal ---------------- */
-  function splitLines(el) {
-    const lines = el.innerHTML.split(/<br\s*\/?>/i);
-    el.innerHTML = lines
-      .map((line) => `<span class="reveal-mask"><span class="split-line">${line.trim()}</span></span>`)
-      .join("<br>");
-  }
-  document.querySelectorAll("[data-split]").forEach(splitLines);
-
-  document.querySelectorAll("[data-lines]").forEach((el) => {
-    const text = el.textContent.trim();
-    el.innerHTML = `<span class="line-inner">${text}</span>`;
-  });
+  const reduceMotion = !!window.siteReduceMotion;
 
   /* ---------------- GSAP setup ---------------- */
   if (window.gsap && window.ScrollTrigger) {
@@ -120,19 +45,21 @@
     const progressDots = gsap.utils.toArray(".story__progress span");
     const storyBg = document.getElementById("storyBg");
 
-    ScrollTrigger.create({
-      trigger: ".story",
-      start: "top top",
-      end: "bottom bottom",
-      pin: ".story__pin",
-      onUpdate: (self) => {
-        const idx = Math.min(chapters.length - 1, Math.floor(self.progress * chapters.length));
-        chapters.forEach((c, i) => c.classList.toggle("is-active", i === idx));
-        progressDots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
-        const tint = chapters[idx].dataset.tint;
-        if (tint) storyBg.style.background = tint;
-      },
-    });
+    if (chapters.length) {
+      ScrollTrigger.create({
+        trigger: ".story",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".story__pin",
+        onUpdate: (self) => {
+          const idx = Math.min(chapters.length - 1, Math.floor(self.progress * chapters.length));
+          chapters.forEach((c, i) => c.classList.toggle("is-active", i === idx));
+          progressDots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+          const tint = chapters[idx].dataset.tint;
+          if (tint) storyBg.style.background = tint;
+        },
+      });
+    }
 
     /* ---------------- Work: horizontal pinned scroll ---------------- */
     const track = document.getElementById("workTrack");
@@ -167,21 +94,23 @@
     }
 
     /* ---------------- Milestones timeline ---------------- */
-    gsap.to("#timelineFill", {
-      height: "100%",
-      ease: "none",
-      scrollTrigger: { trigger: ".timeline", start: "top 60%", end: "bottom 80%", scrub: true },
-    });
-
-    gsap.utils.toArray(".milestone").forEach((m) => {
-      ScrollTrigger.create({
-        trigger: m,
-        start: "top 75%",
-        end: "top 30%",
-        onEnter: () => m.classList.add("is-active"),
-        onEnterBack: () => m.classList.add("is-active"),
+    if (document.querySelector(".timeline")) {
+      gsap.to("#timelineFill", {
+        height: "100%",
+        ease: "none",
+        scrollTrigger: { trigger: ".timeline", start: "top 60%", end: "bottom 80%", scrub: true },
       });
-    });
+
+      gsap.utils.toArray(".milestone").forEach((m) => {
+        ScrollTrigger.create({
+          trigger: m,
+          start: "top 75%",
+          end: "top 30%",
+          onEnter: () => m.classList.add("is-active"),
+          onEnterBack: () => m.classList.add("is-active"),
+        });
+      });
+    }
 
     // Stat counters
     gsap.utils.toArray(".stat__num").forEach((el) => {
@@ -202,7 +131,7 @@
     });
 
     // Generic headings reveal
-    gsap.utils.toArray(".work__heading, .milestones__heading, .contact__heading").forEach((el) => {
+    gsap.utils.toArray(".work__heading, .photography__heading, .radio__heading, .milestones__heading, .contact__heading").forEach((el) => {
       gsap.from(el.querySelectorAll(".split-line"), {
         yPercent: 110,
         duration: 1,
@@ -210,20 +139,11 @@
         scrollTrigger: { trigger: el, start: "top 85%" },
       });
     });
-
-    // Scroll progress rail
-    gsap.to("#scrollFill", {
-      height: "100%",
-      ease: "none",
-      scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: true },
-    });
-
-    // Nav mix-blend already handles contrast; fade nav on hero only if reduce motion off
   }
 
   /* ---------------- Hero canvas: lightweight ambient drift ----------------
-     Pure CSS-gradient/particle animation stands in for a video background —
-     no large media download, GPU-cheap, and paused whenever the hero is
+     Pure canvas particle animation stands in for a video background — no
+     large media download, GPU-cheap, and paused whenever the hero is
      off-screen or the user prefers reduced motion.
      To swap in a real video later: replace this canvas with
      <video autoplay muted loop playsinline poster="..."><source src="..."></video>
@@ -253,8 +173,8 @@
       if (!running) return;
       ctx.clearRect(0, 0, w, h);
       const grad = ctx.createRadialGradient(w * 0.5, h * 0.85, 0, w * 0.5, h * 0.85, h);
-      grad.addColorStop(0, "rgba(217,123,79,0.10)");
-      grad.addColorStop(1, "rgba(11,10,9,0)");
+      grad.addColorStop(0, "rgba(95,184,172,0.10)");
+      grad.addColorStop(1, "rgba(10,11,11,0)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 
@@ -264,7 +184,7 @@
         if (p.y < -10) { p.y = h + 10; p.x = Math.random() * w; }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(243,237,228,${p.a})`;
+        ctx.fillStyle = `rgba(242,239,233,${p.a})`;
         ctx.fill();
       });
       requestAnimationFrame(draw);

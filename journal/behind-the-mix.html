@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behind the Mix — Jack Lyons</title>
+<meta name="description" content="An example video journal entry — replace with your own video.">
+
+<link rel="stylesheet" href="../vendor/fonts/fonts.css">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader__count"><span id="preloaderCount">0</span></div>
+  <div class="preloader__label">Loading the reel</div>
+  <div class="preloader__bar"><span id="preloaderFill"></span></div>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor__dot"></div>
+  <div class="cursor__ring"></div>
+</div>
+
+<div class="scroll-rail" aria-hidden="true"><span id="scrollFill"></span></div>
+
+<header class="nav">
+  <a class="nav__mark" href="../">J·Z·L</a>
+  <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="menu">
+    <span>Menu</span>
+    <div class="nav__burger"><i></i><i></i></div>
+  </button>
+</header>
+
+<nav class="menu" id="menu" aria-hidden="true">
+  <ul class="menu__list">
+    <li><a href="../#story" data-menu-link><span>01</span>The Story</a></li>
+    <li><a href="../#work" data-menu-link><span>02</span>On Screen</a></li>
+    <li><a href="../#photography" data-menu-link><span>03</span>Photography</a></li>
+    <li><a href="../#radio" data-menu-link><span>04</span>Sori Zilla Radio</a></li>
+    <li><a href="./" data-menu-link><span>05</span>Journal</a></li>
+    <li><a href="../#milestones" data-menu-link><span>06</span>Milestones</a></li>
+    <li><a href="../#contact" data-menu-link><span>07</span>Contact</a></li>
+  </ul>
+  <div class="menu__footer">
+    <span>Based in — <em>Seoul, South Korea</em></span>
+    <span>Making noise since 2010</span>
+  </div>
+</nav>
+
+<main>
+  <article class="post">
+    <header class="post__header">
+      <a class="post__back" href="./">← Journal</a>
+      <span class="post__tag" data-reveal-up>Video Log</span>
+      <h1 class="post__title" data-reveal-up>Behind the Mix: Building a Sori Zilla Radio Episode</h1>
+      <div class="post__meta" data-reveal-up>
+        <span>February 14, 2026</span>
+        <span>·</span>
+        <span>4 min watch</span>
+      </div>
+    </header>
+
+    <div class="post__note" data-reveal-up>
+      This is an example video entry, included to show the format. The player below is a
+      placeholder — replace the <code>.post__video</code> block with a real embed (YouTube,
+      Vimeo, or a self-hosted file) and swap this note out entirely.
+    </div>
+
+    <div class="post__video" data-reveal-up>
+      <!--
+        Real embed options:
+
+        YouTube:
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="..."
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+            encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        Self-hosted:
+          <video controls poster="cover.jpg" preload="none">
+            <source src="behind-the-mix.mp4" type="video/mp4">
+          </video>
+      -->
+      <div class="post__video-placeholder">
+        <span class="post__video-play">▶</span>
+        <span class="post__video-caption">Video placeholder — embed goes here</span>
+      </div>
+    </div>
+
+    <div class="post__body" data-reveal-up>
+      <p>Every Sori Zilla Radio episode starts the same way: a folder of tracks I've been
+      hoarding for weeks, no plan, and a deadline I set for myself that nobody else knows
+      about. This one walks through how a mix actually comes together — from the first track
+      that sets the mood to the last-minute scrap-it-and-start-over moment that happens more
+      often than I'd like to admit.</p>
+
+      <p><em>[This is placeholder text demonstrating the video-log format — swap in your own
+      writeup, or drop the text entirely if the video should speak for itself.]</em></p>
+    </div>
+
+    <footer class="post__footer">
+      <a href="./" class="post__footer-link">← Back to the Journal</a>
+    </footer>
+  </article>
+
+  <footer class="footer">
+    <span>© 2026 Jack Lyons</span>
+    <span>Built frame by frame</span>
+    <a href="../#top">Back to top ↑</a>
+  </footer>
+</main>
+
+<script src="../chrome.js"></script>
+</body>
+</html>

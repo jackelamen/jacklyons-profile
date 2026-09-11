@@ -42,8 +42,9 @@
     <li><a href="#work" data-menu-link><span>02</span>On Screen</a></li>
     <li><a href="#photography" data-menu-link><span>03</span>Photography</a></li>
     <li><a href="#radio" data-menu-link><span>04</span>Sori Zilla Radio</a></li>
-    <li><a href="#milestones" data-menu-link><span>05</span>Milestones</a></li>
-    <li><a href="#contact" data-menu-link><span>06</span>Contact</a></li>
+    <li><a href="journal/" data-menu-link><span>05</span>Journal</a></li>
+    <li><a href="#milestones" data-menu-link><span>06</span>Milestones</a></li>
+    <li><a href="#contact" data-menu-link><span>07</span>Contact</a></li>
   </ul>
   <div class="menu__footer">
     <span>Based in — <em>Seoul, South Korea</em></span>
@@ -288,9 +289,22 @@
     </ol>
   </section>
 
+  <!-- ============ JOURNAL TEASER ============ -->
+  <section class="journal-teaser" id="journal-teaser">
+    <div class="journal-teaser__intro">
+      <span class="journal-teaser__index">05 — Journal</span>
+      <h2 class="journal-teaser__heading" data-split>Longer thoughts,<br>written down.</h2>
+      <p class="journal-teaser__desc">The scenes above move fast. The journal is where I slow
+        down — essays, updates, and the odd video log. <a href="journal/">Read the full journal →</a></p>
+    </div>
+    <div class="journal-teaser__list" id="journalTeaserList" aria-live="polite">
+      <!-- populated from journal/posts.json by journal-teaser.js -->
+    </div>
+  </section>
+
   <!-- ============ MILESTONES ============ -->
   <section class="milestones" id="milestones">
-    <span class="milestones__index">05 — Milestones</span>
+    <span class="milestones__index">06 — Milestones</span>
     <h2 class="milestones__heading" data-split>Moments worth<br>the reel running twice.</h2>
 
     <div class="timeline">
@@ -360,7 +374,7 @@
   <!-- ============ CONTACT ============ -->
   <section class="contact" id="contact">
     <div class="contact__inner">
-      <span class="contact__index">06 — Contact</span>
+      <span class="contact__index">07 — Contact</span>
       <h2 class="contact__heading" data-split>Got a story worth<br>making noise about?</h2>
       <a class="contact__email" href="mailto:hello@jelyons.com">hello@jelyons.com</a>
       <div class="contact__socials">
@@ -381,6 +395,13 @@
 
 <script src="vendor/gsap/gsap.min.js"></script>
 <script src="vendor/gsap/ScrollTrigger.min.js"></script>
-<script src="script.js"></script>
+<script src="chrome.js"></script>
+<script src="home.js"></script>
+<script src="journal/render.js"></script>
+<script>
+  loadJournalPosts("journal/").then((posts) => {
+    renderJournalCards(document.getElementById("journalTeaserList"), posts, { basePath: "journal/", limit: 2 });
+  });
+</script>
 </body>
 </html>
