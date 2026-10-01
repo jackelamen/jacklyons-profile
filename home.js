@@ -131,7 +131,7 @@
     });
 
     // Generic headings reveal
-    gsap.utils.toArray(".work__heading, .photography__heading, .radio__heading, .milestones__heading, .contact__heading").forEach((el) => {
+    gsap.utils.toArray(".who__heading, .work__heading, .photography__heading, .radio__heading, .milestones__heading, .contact__heading").forEach((el) => {
       gsap.from(el.querySelectorAll(".split-line"), {
         yPercent: 110,
         duration: 1,

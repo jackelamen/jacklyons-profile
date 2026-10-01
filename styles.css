@@ -203,8 +203,22 @@ section{ position: relative; }
 }
 .intro__text .line-inner{ color: var(--fg); }
 
+/* ---------- Who is Jack Lyons ---------- */
+.who{ padding: 20vh var(--container); background: var(--bg-soft); }
+.who__index{ font-family: var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--fg-dim); }
+.who__heading{ font-family: var(--serif); font-weight:400; font-size: clamp(34px,5.6vw,80px); margin: 22px 0 10vh; line-height:1.08; letter-spacing:-0.01em; }
+.dossier{ margin:0; max-width: 980px; }
+.dossier__row{
+  display:grid; grid-template-columns: minmax(120px, 200px) 1fr; gap: 24px 40px;
+  padding: 26px 0; border-top: 1px solid var(--line);
+}
+.dossier__row:last-child{ border-bottom: 1px solid var(--line); }
+.dossier dt{ font-family: var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--accent); padding-top: 6px; }
+.dossier dd{ margin:0; font-size: clamp(17px,1.7vw,22px); line-height:1.55; color: var(--fg); max-width: 52ch; }
+@media (max-width: 640px){ .dossier__row{ grid-template-columns: 1fr; gap: 8px; } }
+
 /* ---------- Story (pinned chapters) ---------- */
-.story{ height: 500vh; background: var(--bg); }
+.story{ height: 700vh; background: var(--bg); }
 .story__pin{ position: sticky; top:0; height:100svh; overflow:hidden; }
 .story__bg{
   position:absolute; inset:0; background: #0d1b1e; transition: background 1s var(--ease);
@@ -218,7 +232,7 @@ section{ position: relative; }
   position:absolute; top:40px; left:var(--container);
   font-family: var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color: var(--fg-dim);
 }
-.story__chapters{ position:relative; max-width: 780px; height: 58vh; min-height: 420px; }
+.story__chapters{ position:relative; max-width: 780px; height: 66vh; min-height: 520px; }
 .chapter{
   position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center;
   opacity:0; transform: translateY(40px);
